@@ -8,12 +8,13 @@ namespace Heaps {
 
 			virtual void Insert(size_t index, int key) = 0;
 
-			virtual void Meld(int index1, int index2) = 0;
+			virtual size_t Meld(size_t index1, size_t index2) = 0;
 
-			virtual int GetMin(int index) = 0;
+			virtual int GetMin(size_t index) = 0;
 
-			virtual int ExtractMin(int index) = 0;
+			virtual int ExtractMin(size_t index) = 0;
 
+			virtual bool ContainsHeap(size_t index) = 0;
 		};
 	};
 
