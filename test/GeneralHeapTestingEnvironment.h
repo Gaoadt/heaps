@@ -1,13 +1,12 @@
 #pragma once
+#include "../src/IHeapFactory.h"
 #include "IHeapTestingEnvironment.h"
-#include <list>
-#include <algorithm>
 #include <vector>
-
 namespace Heaps {
 	namespace Testing {
-		class MockHeapTestingEnvironment : public IHeapTestingEnvironment {
+	    class GeneralHeapTestingEnvironment : public IHeapTestingEnvironment {
 		public:
+			GeneralHeapTestingEnvironment(IHeapFactory *someFactory);
 			virtual size_t AddHeap(int key) override;
 			virtual void Insert(size_t index, int key) override;
 			virtual size_t Meld(size_t index1, size_t index2) override;
@@ -15,9 +14,9 @@ namespace Heaps {
 			virtual int ExtractMin(size_t index) override;
 			virtual bool ContainsHeap(size_t index) override;
 			virtual std::string ToString() override;
-		protected:
-			std::vector<std::list<int>> _mockHeaps;			
+		private:
+			IHeapFactory* _factory;
+			std::vector<IHeap*> _heaps;
 		};
-
 	};
 };

@@ -35,3 +35,8 @@ bool Heaps::Testing::MockHeapTestingEnvironment::ContainsHeap(size_t index)
 	if (index >= _mockHeaps.size())return false;
 	return !_mockHeaps[index].empty();
 }
+
+std::string Heaps::Testing::MockHeapTestingEnvironment::ToString()
+{
+	return "MockEnvironment";
+}

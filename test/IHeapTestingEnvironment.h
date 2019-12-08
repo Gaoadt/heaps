@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 namespace Heaps {
 	namespace Testing {
 		class IHeapTestingEnvironment {
@@ -15,6 +16,8 @@ namespace Heaps {
 			virtual int ExtractMin(size_t index) = 0;
 
 			virtual bool ContainsHeap(size_t index) = 0;
+
+			virtual std::string ToString() = 0;
 		};
 	};
 

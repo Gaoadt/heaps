@@ -1,9 +1,5 @@
 #pragma once
 #include "TestEnvironment.h"
-#include <gtest/gtest.h>
-#include <vector>
-#include <algorithm>
-
 using namespace Heaps;
 using namespace Testing;
 
@@ -16,10 +12,10 @@ TEST_P(HeapBehaviourTest, SimpleInsertAndExtractTest) {
 
 TEST_P(HeapBehaviourTest, MultipleInsertAndExtractTest) {
 			IHeapTestingEnvironment* environment = GetParam();
-			size_t heap1 = environment->AddHeap(0);
-			environment->Insert(heap1, 1);
+			size_t heap1 = environment->AddHeap(3);
 			environment->Insert(heap1, 2);
-			environment->Insert(heap1, 3);
+			environment->Insert(heap1, 1);
+			environment->Insert(heap1, 0);
 			ASSERT_TRUE(environment->ContainsHeap(heap1));
 			ASSERT_EQ(environment->ExtractMin(heap1), 0);
 			ASSERT_TRUE(environment->ContainsHeap(heap1));
@@ -134,5 +130,8 @@ TEST_P(HeapBehaviourTest, MeldAndInsert ) {
 
 
 
-INSTANTIATE_TEST_CASE_P(BehaviourTest, HeapBehaviourTest, testing::Values(new MockHeapTestingEnvironment()));
+INSTANTIATE_TEST_CASE_P(BehaviourTest, HeapBehaviourTest, testing::Values(
+	new MockHeapTestingEnvironment(),
+	new GeneralHeapTestingEnvironment(new HeapFactory<LeftiestHeap>())
+), Heaps::Testing::heapParamName);
 
