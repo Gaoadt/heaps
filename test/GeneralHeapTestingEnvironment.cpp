@@ -43,5 +43,14 @@ bool Heaps::Testing::GeneralHeapTestingEnvironment::ContainsHeap(size_t index)
 
 std::string Heaps::Testing::GeneralHeapTestingEnvironment::ToString()
 {
-	return "GeneralHeap";
+	std::string heapTypeName = _factory->HeapType();
+	std::string result = "GeneralEnvironment";
+	std::string alphaNumerics = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890";
+	for (std::string::iterator iter = heapTypeName.begin(); iter != heapTypeName.end(); ++iter) {
+		if (alphaNumerics.find(*iter) < alphaNumerics.size()) {
+			result.push_back(*iter);
+		}
+	}
+
+	return result;
 }

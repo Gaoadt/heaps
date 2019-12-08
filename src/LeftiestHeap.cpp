@@ -1,46 +1,5 @@
 #include "LeftiestHeap.h"
-
-int Heaps::LeftiestHeap::GetMin()
-{
-	return _root->key;
-}
-
-int Heaps::LeftiestHeap::ExtractMin()
-{
-	int extractedMinimnum = GetMin();
-	Node* temp = _root;
-	_root = _merge(_root->left, _root->right);
-	delete temp;
-	return extractedMinimnum;
-
-}
-
-void Heaps::LeftiestHeap::InsertKey(int key)
-{
-	_root = _merge(_root, new Node(key));
-}
-
-bool Heaps::LeftiestHeap::Empty()
-{
-	return _root == nullptr;
-}
-
-void Heaps::LeftiestHeap::Merge(IHeap* otherHeap)
-{
-	LeftiestHeap* heap = dynamic_cast<LeftiestHeap *>(otherHeap);
-	if (heap != nullptr) {
-		Merge(heap);
-	}
-	else {
-		GeneralHeap::Merge(otherHeap);
-	}
-}
-
-void Heaps::LeftiestHeap::Merge(LeftiestHeap* otherHeap)
-{
-	_root = _merge(_root, otherHeap->_root);
-	otherHeap->_root = nullptr;
-}
+#include <algorithm>
 
 size_t Heaps::LeftiestHeap::_rank(Node* root)
 {
@@ -48,32 +7,24 @@ size_t Heaps::LeftiestHeap::_rank(Node* root)
 	return root->rank;
 }
 
-void Heaps::LeftiestHeap::_fixLeftiestProperty(Node* root)
+void Heaps::LeftiestHeap::_fixHeap(BinaryTreeBasedHeap::Node *givenRoot)
 {
+	LeftiestHeap::Node* root = dynamic_cast<LeftiestHeap::Node*>(givenRoot);
 	if (root == nullptr)return;
-	if (_rank(root->right) > _rank(root->left)) {
+	if (_rank(dynamic_cast<LeftiestHeap::Node*>(root->right)) > _rank(dynamic_cast<LeftiestHeap::Node*>(root->right))) {
 		std::swap(root->left, root->right);
 	}
-	root->rank = std::min(_rank(root->left), _rank(root->right)) + 1;
+	root->rank = std::min(_rank(dynamic_cast<LeftiestHeap::Node*>(root->right)), _rank(dynamic_cast<LeftiestHeap::Node*>(root->right))) + 1;
 }
 
-Heaps::LeftiestHeap::Node* Heaps::LeftiestHeap::_merge(Node* left, Node* right)
+Heaps::BinaryTreeBasedHeap::Node* Heaps::LeftiestHeap::_makeNode(int key)
 {
-	if (left == nullptr) return right;
-	if (right == nullptr)return left;
-
-	if (left->key > right->key) {
-		std::swap(left, right);
-	}
-
-	left->right = _merge(left->right, right);
-	_fixLeftiestProperty(left);
-	return left;
+	return new Node(key);
 }
 
-Heaps::LeftiestHeap::Node::Node(int nodeKey)
+Heaps::LeftiestHeap::Node::Node(int someKey) : Heaps::BinaryTreeBasedHeap::Node::Node(someKey)
 {
-	key = nodeKey;
 	rank = 1;
 }
+
 

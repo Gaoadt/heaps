@@ -5,5 +5,9 @@ namespace Heaps {
 		virtual IHeap* MakeHeap() override {
 			return dynamic_cast<IHeap *>(new T());
 		}
+
+		virtual std::string HeapType() override {
+			return typeid(T).name();
+		}
 	};
 };

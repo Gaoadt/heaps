@@ -2,6 +2,7 @@
 #include "gtest/gtest.h"
 #include "../src/HeapFactory.h"
 #include "../src/LeftiestHeap.h"
+#include "../src/SkewHeap.h"
 #include "IHeapTestingEnvironment.h"
 #include "MockHeapTestingEnvironment.h"
 #include "GeneralHeapTestingEnvironment.h"
