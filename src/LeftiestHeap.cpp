@@ -17,7 +17,7 @@ void Heaps::LeftiestHeap::_fixHeap(BinaryTreeBasedHeap::Node *givenRoot)
 	root->rank = std::min(_rank(dynamic_cast<LeftiestHeap::Node*>(root->right)), _rank(dynamic_cast<LeftiestHeap::Node*>(root->right))) + 1;
 }
 
-Heaps::BinaryTreeBasedHeap::Node* Heaps::LeftiestHeap::_makeNode(int key)
+Heaps::TreeBasedHeap::Node* Heaps::LeftiestHeap::_makeNode(int key)
 {
 	return new Node(key);
 }
@@ -26,5 +26,8 @@ Heaps::LeftiestHeap::Node::Node(int someKey) : Heaps::BinaryTreeBasedHeap::Node:
 {
 	rank = 1;
 }
+
+
+
 
 
