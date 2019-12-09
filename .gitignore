@@ -30,3 +30,13 @@
 *.exe
 *.out
 *.app
+*.config
+
+.vs/
+*.sln
+*.vcxproj*
+packages/
+
+src/Source.cpp
+*Debug/
+*Release/
