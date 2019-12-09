@@ -18,6 +18,8 @@ namespace Heaps {
 			virtual bool ContainsHeap(size_t index) = 0;
 
 			virtual std::string ToString() = 0;
+
+			virtual void Clear() = 0;
 		};
 	};
 

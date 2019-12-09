@@ -30,6 +30,7 @@ void Heaps::BinaryTreeBasedHeap::Merge(IHeap* otherHeap)
 
 void Heaps::BinaryTreeBasedHeap::Merge(BinaryTreeBasedHeap* otherHeap)
 {
+	if (otherHeap == this)return;
 	_root = _merge(_root, otherHeap->_root);
 	otherHeap->_root = nullptr;
 }
@@ -69,5 +70,10 @@ void Heaps::BinaryTreeBasedHeap::_deleteMinimum()
 
 Heaps::BinaryTreeBasedHeap::Node::Node(int someKey) : Heaps::TreeBasedHeap::Node::Node(someKey) {
 
+}
+
+std::vector<Heaps::TreeBasedHeap::Node*> Heaps::BinaryTreeBasedHeap::Node::GetChilds()
+{
+	return { left,right };
 }
 

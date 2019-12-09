@@ -14,9 +14,12 @@ namespace Heaps {
 			virtual int ExtractMin(size_t index) override;
 			virtual bool ContainsHeap(size_t index) override;
 			virtual std::string ToString() override;
+			virtual void Clear() override;
+			
 		private:
 			IHeapFactory* _factory;
 			std::vector<IHeap*> _heaps;
+
 		};
 	};
 };

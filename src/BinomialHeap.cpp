@@ -44,6 +44,7 @@ void Heaps::BinomialHeap::Merge(IHeap* otherHeap)
 
 void Heaps::BinomialHeap::Merge(BinomialHeap* otherHeap)
 {
+	if (otherHeap == this)return;
 	std::vector<Node*>& forest1 = _binomialRoot()->childs;
 	std::vector<Node*>& forest2 = otherHeap->_binomialRoot()->childs;
 	size_t new_size = std::max(forest1.size(), forest2.size()) + 1;
@@ -72,13 +73,6 @@ void Heaps::BinomialHeap::_deleteMinimum()
 	tempHeap->_root = root->childs[root->minIndex];
 	root->childs[root->minIndex] = nullptr;
 	Merge(tempHeap);
-	
-	std::cout << "Extracting [" << root->minIndex << "]\n";
-	for (size_t i = 0; i < root->childs.size(); ++i) {
-		size_t size = (root->childs[i] == nullptr) ? 0 : (1 << root->childs[i]->childs.size());
-		std::cout << size << " ";
-	}
-	std::cout << "\n";
 
 	delete tempHeap;
 }
@@ -134,7 +128,17 @@ void Heaps::BinomialHeap::_updateMinimum()
 	_binomialRoot()->minIndex = loaclMinimum;
 }
 
+Heaps::TreeBasedHeap::Node* Heaps::BinomialHeap::_makeNode(int key)
+{
+	return new Node(key);
+}
+
 Heaps::BinomialHeap::Node::Node(int someKey) : Heaps::TreeBasedHeap::Node(someKey) {
 
+}
+
+std::vector<Heaps::TreeBasedHeap::Node *> Heaps::BinomialHeap::Node::GetChilds()
+{
+	return std::vector<TreeBasedHeap::Node *>(childs.begin(), childs.end());
 }
 

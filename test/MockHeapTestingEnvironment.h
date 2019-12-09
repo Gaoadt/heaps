@@ -15,8 +15,10 @@ namespace Heaps {
 			virtual int ExtractMin(size_t index) override;
 			virtual bool ContainsHeap(size_t index) override;
 			virtual std::string ToString() override;
+			virtual void Clear() override;
 		protected:
 			std::vector<std::list<int>> _mockHeaps;			
+
 		};
 
 	};

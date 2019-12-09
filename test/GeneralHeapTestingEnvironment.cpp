@@ -54,3 +54,8 @@ std::string Heaps::Testing::GeneralHeapTestingEnvironment::ToString()
 
 	return result;
 }
+
+void Heaps::Testing::GeneralHeapTestingEnvironment::Clear()
+{
+	_heaps.clear();
+}

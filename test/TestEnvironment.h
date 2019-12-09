@@ -15,9 +15,11 @@
 #include <algorithm>
 
 class HeapBehaviourTest : public testing::TestWithParam<Heaps::Testing::IHeapTestingEnvironment*> {};
+class HeapStressTest : public testing::TestWithParam < Heaps::Testing::IHeapTestingEnvironment*> {};
 
 namespace Heaps {
 	namespace Testing {
         std::string heapParamName(const testing::TestParamInfo<HeapBehaviourTest::ParamType>& info);
 	}
 }
+

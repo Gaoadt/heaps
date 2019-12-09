@@ -40,3 +40,8 @@ std::string Heaps::Testing::MockHeapTestingEnvironment::ToString()
 {
 	return "MockEnvironment";
 }
+
+void Heaps::Testing::MockHeapTestingEnvironment::Clear()
+{
+	_mockHeaps.clear();
+}

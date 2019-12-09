@@ -16,10 +16,12 @@ namespace Heaps {
 			Node(int someKey);
 			std::vector<Node*> childs;
 			size_t minIndex = 0;
+			virtual std::vector<TreeBasedHeap::Node*> GetChilds() override;
 		};
 	    virtual Node* _mergeSimilar(Node* first, Node* second);
 		virtual void _deleteMinimum() override;
 		virtual void _removeLeadingNullPointers();
+		virtual TreeBasedHeap::Node* _makeNode(int key) override;
 	private:
 		Node* _binomialRoot() const;
 		void _mergeBinomialForests(std::vector<Node*> &heap1,std::vector<Node *>&heap2, Node* reminder, size_t index);
