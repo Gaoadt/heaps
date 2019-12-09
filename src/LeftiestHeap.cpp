@@ -11,7 +11,7 @@ void Heaps::LeftiestHeap::_fixHeap(BinaryTreeBasedHeap::Node *givenRoot)
 {
 	LeftiestHeap::Node* root = dynamic_cast<LeftiestHeap::Node*>(givenRoot);
 	if (root == nullptr)return;
-	if (_rank(dynamic_cast<LeftiestHeap::Node*>(root->right)) > _rank(dynamic_cast<LeftiestHeap::Node*>(root->right))) {
+	if (_rank(dynamic_cast<LeftiestHeap::Node*>(root->left)) > _rank(dynamic_cast<LeftiestHeap::Node*>(root->right))) {
 		std::swap(root->left, root->right);
 	}
 	root->rank = std::min(_rank(dynamic_cast<LeftiestHeap::Node*>(root->right)), _rank(dynamic_cast<LeftiestHeap::Node*>(root->right))) + 1;
