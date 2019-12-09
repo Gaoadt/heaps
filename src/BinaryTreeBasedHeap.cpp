@@ -72,3 +72,8 @@ Heaps::BinaryTreeBasedHeap::Node::Node(int someKey) : Heaps::TreeBasedHeap::Node
 
 }
 
+std::vector<Heaps::TreeBasedHeap::Node*> Heaps::BinaryTreeBasedHeap::Node::GetChilds()
+{
+	return { left,right };
+}
+

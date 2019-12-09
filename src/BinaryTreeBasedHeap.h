@@ -15,6 +15,7 @@ namespace Heaps {
 
 			Node* left = nullptr;
 			Node* right = nullptr;
+			virtual std::vector<TreeBasedHeap::Node*> GetChilds() override;
 
 		};
 		virtual Node* _merge(Node* left, Node *right);

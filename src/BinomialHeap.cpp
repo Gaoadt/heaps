@@ -128,7 +128,17 @@ void Heaps::BinomialHeap::_updateMinimum()
 	_binomialRoot()->minIndex = loaclMinimum;
 }
 
+Heaps::TreeBasedHeap::Node* Heaps::BinomialHeap::_makeNode(int key)
+{
+	return new Node(key);
+}
+
 Heaps::BinomialHeap::Node::Node(int someKey) : Heaps::TreeBasedHeap::Node(someKey) {
 
+}
+
+std::vector<Heaps::TreeBasedHeap::Node *> Heaps::BinomialHeap::Node::GetChilds()
+{
+	return std::vector<TreeBasedHeap::Node *>(childs.begin(), childs.end());
 }
 
