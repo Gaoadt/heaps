@@ -30,6 +30,7 @@ void Heaps::BinaryTreeBasedHeap::Merge(IHeap* otherHeap)
 
 void Heaps::BinaryTreeBasedHeap::Merge(BinaryTreeBasedHeap* otherHeap)
 {
+	if (otherHeap == this)return;
 	_root = _merge(_root, otherHeap->_root);
 	otherHeap->_root = nullptr;
 }

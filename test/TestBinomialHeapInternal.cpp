@@ -35,3 +35,4 @@ TEST(Heaps::BinomialHeapInternal, Merge3to1) {
 	ASSERT_EQ(heap1._binomialRoot()->childs[1], nullptr);
 	ASSERT_EQ(heap1._binomialRoot()->childs[2]->childs.size(), 2);
 }
+
