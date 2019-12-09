@@ -1,6 +1,6 @@
 #include "BinomialHeap.h"
 #include <algorithm>
-
+#include <iostream>
 Heaps::BinomialHeap::BinomialHeap()
 {
 	_root = new Node(_FICTIVE_KEY);
@@ -72,12 +72,20 @@ void Heaps::BinomialHeap::_deleteMinimum()
 	tempHeap->_root = root->childs[root->minIndex];
 	root->childs[root->minIndex] = nullptr;
 	Merge(tempHeap);
+	
+	std::cout << "Extracting [" << root->minIndex << "]\n";
+	for (size_t i = 0; i < root->childs.size(); ++i) {
+		size_t size = (root->childs[i] == nullptr) ? 0 : (1 << root->childs[i]->childs.size());
+		std::cout << size << " ";
+	}
+	std::cout << "\n";
+
 	delete tempHeap;
 }
 
 void Heaps::BinomialHeap::_removeLeadingNullPointers()
 {
-	std::vector<Node*> forest = _binomialRoot()->childs;
+	std::vector<Node*> &forest = _binomialRoot()->childs;
 	while (!forest.empty() && forest.back() == nullptr) {
 		forest.pop_back();
 	}
@@ -94,6 +102,7 @@ void Heaps::BinomialHeap::_mergeBinomialForests(std::vector<Node*>& heap1, std::
 		return;
 	}
 
+	_tryPush(heap1[index], heap2[index]);
 	_tryPush(heap2[index], reminder);
 	_tryPush(heap1[index], heap2[index]);
 

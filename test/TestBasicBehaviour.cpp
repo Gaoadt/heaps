@@ -131,9 +131,9 @@ TEST_P(HeapBehaviourTest, MeldAndInsert ) {
 
 
 INSTANTIATE_TEST_CASE_P(BehaviourTest, HeapBehaviourTest, testing::Values(
-//	new MockHeapTestingEnvironment(),
-//	new GeneralHeapTestingEnvironment(new HeapFactory<SkewHeap>()),
-//	new GeneralHeapTestingEnvironment(new HeapFactory<LeftiestHeap>()),
+	new MockHeapTestingEnvironment(),
+	new GeneralHeapTestingEnvironment(new HeapFactory<SkewHeap>()),
+	new GeneralHeapTestingEnvironment(new HeapFactory<LeftiestHeap>()),
 	new GeneralHeapTestingEnvironment(new HeapFactory<BinomialHeap>())
 ), Heaps::Testing::heapParamName);
 

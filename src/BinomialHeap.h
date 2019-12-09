@@ -31,6 +31,7 @@ namespace Heaps {
 #ifdef  HEAP_TESTING
 		FRIEND_TEST(BinomialHeapInternal, UpdateMinimum1);
 		FRIEND_TEST(BinomialHeapInternal, UpdateMinimum2);
+		FRIEND_TEST(BinomialHeapInternal, Merge3to1);
 #endif // HEAP_TESTING
 
 	};
