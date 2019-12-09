@@ -65,6 +65,7 @@ void Heaps::BinaryTreeBasedHeap::_deleteMinimum()
 {
 	Node* temp = dynamic_cast<Node*>(_root);
 	_root = _merge(temp->left, temp->right);
+	_fixHeap(dynamic_cast<Node*>(_root));
 	delete temp;
 }
 

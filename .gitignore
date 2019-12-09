@@ -39,3 +39,4 @@ packages/
 
 src/Source.cpp
 *Debug/
+*Release/
