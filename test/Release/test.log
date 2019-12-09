@@ -1,0 +1,10 @@
+﻿  BinaryTreeBasedHeap.cpp
+  SkewHeap.cpp
+  LeftiestHeapTest.cpp
+  TestBinomialHeapInternal.cpp
+  TestBasicBehaviour.cpp
+  LeftiestHeap.cpp
+  TestEnvironment.cpp
+  TestStress.cpp
+  Создание кода...
+  test.vcxproj -> D:\PreProjects\heaps\Release\test.exe
