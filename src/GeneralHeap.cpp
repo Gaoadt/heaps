@@ -6,3 +6,11 @@ void Heaps::GeneralHeap::Merge(IHeap* otherHeap)
 		InsertKey(otherHeap->ExtractMin());
 	}
 }
+
+int Heaps::GeneralHeap::ExtractMin()
+{
+	int extractedMinimum = GetMin();
+	_deleteMinimum();
+	return extractedMinimum;
+
+}
