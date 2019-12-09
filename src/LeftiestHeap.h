@@ -10,6 +10,6 @@ namespace Heaps {
 		};
 		size_t _rank(Node* root);
 		virtual void _fixHeap(BinaryTreeBasedHeap::Node* givenRoot) override;
-		virtual BinaryTreeBasedHeap::Node* _makeNode(int key) override;
+		virtual TreeBasedHeap::Node* _makeNode(int key) override;
 	};
 };

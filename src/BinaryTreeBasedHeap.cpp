@@ -6,15 +6,6 @@ int Heaps::BinaryTreeBasedHeap::GetMin() const
 	return _root->key;
 }
 
-int Heaps::BinaryTreeBasedHeap::ExtractMin()
-{
-	int extractedMinimnum = GetMin();
-	Node* temp = _root;
-	_root = _merge(_root->left, _root->right);
-	delete temp;
-	return extractedMinimnum;
-}
-
 void Heaps::BinaryTreeBasedHeap::InsertKey(int key)
 {
 	_root = _merge(_root, _makeNode(key));
@@ -58,16 +49,25 @@ Heaps::BinaryTreeBasedHeap::Node* Heaps::BinaryTreeBasedHeap::_merge(Node* left,
 	return left;
 }
 
-Heaps::BinaryTreeBasedHeap::Node* Heaps::BinaryTreeBasedHeap::_makeNode(int key)
+Heaps::BinaryTreeBasedHeap::Node* Heaps::BinaryTreeBasedHeap::_merge(Heaps::TreeBasedHeap::Node* left, Heaps::TreeBasedHeap::Node* right) {
+	Node* myLeft = dynamic_cast<Node*>(left);
+	Node* myRight = dynamic_cast<Node*>(right);
+	return _merge(myLeft, myRight);
+}
+
+Heaps::TreeBasedHeap::Node* Heaps::BinaryTreeBasedHeap::_makeNode(int key)
 {
 	return new Node(key);
 }
 
-Heaps::BinaryTreeBasedHeap::Node::Node(int someKey) {
-	key = someKey;
-}
-
-
-Heaps::BinaryTreeBasedHeap::Node::~Node()
+void Heaps::BinaryTreeBasedHeap::_deleteMinimum()
 {
+	Node* temp = dynamic_cast<Node*>(_root);
+	_root = _merge(temp->left, temp->right);
+	delete temp;
 }
+
+Heaps::BinaryTreeBasedHeap::Node::Node(int someKey) : Heaps::TreeBasedHeap::Node::Node(someKey) {
+
+}
+
