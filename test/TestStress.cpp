@@ -8,6 +8,13 @@
 using namespace Heaps;
 using namespace Testing;
 
+enum Opertations {
+	GetMin = 0,
+	ExtractMin = 1,
+	Insert = 2,
+	Merge = 3
+};
+
 void StressTest(IHeapTestingEnvironment* env) {
 	env->Clear();
 
@@ -35,21 +42,21 @@ void StressTest(IHeapTestingEnvironment* env) {
 
 		switch (oper)
 		{
-		case 0: {
+		case Opertations::GetMin: {
 			ASSERT_EQ(env->GetMin(heap1), correctEnv->GetMin(heap1));
 			break;
 		}
-		case 1: {
+		case Opertations::ExtractMin: {
 			ASSERT_EQ(env->ExtractMin(heap1), correctEnv->ExtractMin(heap1));
 			break;
 		}
-		case 2: {
+		case Opertations::Insert: {
 			int key = rand();
 			env->Insert(heap1, key);
 			correctEnv->Insert(heap1, key);
 			break;
 		}
-		case 3: {
+		case Opertations::Merge: {
 			if (!env->ContainsHeap(heap2)) {
 				heap2 = env->AddHeap(0);
 				heap2 = correctEnv->AddHeap(0);
