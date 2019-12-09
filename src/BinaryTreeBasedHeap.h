@@ -22,7 +22,7 @@ namespace Heaps {
 		virtual void _fixHeap(Node* root) = 0;
 		virtual TreeBasedHeap::Node* _makeNode(int key) override;
 		virtual void _deleteMinimum() override;
-
-		
 	};
 };
+
+#define VORONEZH

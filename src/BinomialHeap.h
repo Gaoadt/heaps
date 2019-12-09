@@ -29,7 +29,8 @@ namespace Heaps {
 		const int _FICTIVE_KEY = 0;
 
 #ifdef  HEAP_TESTING
-		FRIEND_TEST(BinomialHeapInternal, UpdateMinimum);
+		FRIEND_TEST(BinomialHeapInternal, UpdateMinimum1);
+		FRIEND_TEST(BinomialHeapInternal, UpdateMinimum2);
 #endif // HEAP_TESTING
 
 	};

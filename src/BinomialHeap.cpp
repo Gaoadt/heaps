@@ -117,7 +117,7 @@ void Heaps::BinomialHeap::_updateMinimum()
 	std::vector<Node*>& forest1 = _binomialRoot()->childs;
 	size_t loaclMinimum = 0;
 	for (size_t i = 0; i < forest1.size(); ++i) {
-		if (forest1[loaclMinimum] == nullptr || (forest1[i] != nullptr && forest1[i] < forest1[loaclMinimum])) {
+		if (forest1[loaclMinimum] == nullptr || (forest1[i] != nullptr && forest1[i]->key < forest1[loaclMinimum]->key)) {
 			loaclMinimum = i;
 		}
 	}
